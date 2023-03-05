@@ -19,15 +19,30 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    private void checkIfUserNameExistsInDb(String username) {
+        if (userRepository.existsByUsername(username)) {
+            throw new ResourceNotAvailableException("Username is already in use");
+        }
+    }
+
+    private void checkIfEmailExistsInDb(String email) {
+        if (userRepository.existsByEmail(email)) {
+            throw new ResourceNotAvailableException("Email is already in use");
+        }
+    }
+
     @Override
     public User createUser(User user) {
-        if(userRepository.existsByUsername(user.getUsername())){
-            throw new ResourceNotAvailableException("Username is already in use");
-        } else if (userRepository.existsByEmail(user.getEmail())){
-            throw new ResourceNotAvailableException("Email is already in use");
-        } else {
-            return userRepository.save(user);
-        }
+        checkIfUserNameExistsInDb(user.getUsername());
+        checkIfEmailExistsInDb(user.getEmail());
+        return userRepository.save(user);
+//        if(userRepository.existsByUsername(user.getUsername())){
+//            throw new ResourceNotAvailableException("Username is already in use");
+//        } else if (userRepository.existsByEmail(user.getEmail())){
+//            throw new ResourceNotAvailableException("Email is already in use");
+//        } else {
+//            return userRepository.save(user);
+//        }
     }
 
     @Override
@@ -46,9 +61,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(Long id, User user) {
+    public User updateUserName(Long id, User user) {
+        checkIfUserNameExistsInDb(user.getUsername());
         User existingUser = getUserById(id);
         existingUser.setUsername(user.getUsername());
+        return userRepository.save(existingUser);
+    }
+
+    @Override
+    public User updateEmail(Long id, User user) {
+        checkIfEmailExistsInDb(user.getEmail());
+        User existingUser = getUserById(id);
         existingUser.setEmail(user.getEmail());
         return userRepository.save(existingUser);
     }

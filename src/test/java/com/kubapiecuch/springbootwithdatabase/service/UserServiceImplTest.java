@@ -35,6 +35,6 @@ class UserServiceImplTest {
         user.setId(userId);
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
-        userService.updateUser(userId, user);
+        userService.updateUserName(userId, user);
     }
 }

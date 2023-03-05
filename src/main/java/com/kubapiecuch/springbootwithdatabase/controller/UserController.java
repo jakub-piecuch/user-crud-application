@@ -22,8 +22,9 @@ public class UserController {
     }
 
     @GetMapping()
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -44,9 +45,16 @@ public class UserController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
-        User userToUpdate = userService.updateUser(id, user);
+    @PutMapping("/username/{id}")
+    public ResponseEntity<User> updateUserName(@PathVariable("id") Long id, @RequestBody User user) {
+        User userToUpdate = userService.updateUserName(id, user);
+        return new ResponseEntity<>(userToUpdate, HttpStatus.OK);
+
+    }
+
+    @PutMapping("/email/{id}")
+    public ResponseEntity<User> updateUserEmail(@PathVariable("id") Long id, @RequestBody User user) {
+        User userToUpdate = userService.updateEmail(id, user);
         return new ResponseEntity<>(userToUpdate, HttpStatus.OK);
 
     }
