@@ -8,17 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl {
+public class UserService {
 
     private final UserRepository userRepository;
+    private final UserDtoMapper userDtoMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserService(UserRepository userRepository,
+                       UserDtoMapper userDtoMapper
+    ) {
         this.userRepository = userRepository;
+        this.userDtoMapper = userDtoMapper;
     }
 
     private void checkIfUserNameExistsInDb(String username) {
@@ -33,48 +36,44 @@ public class UserServiceImpl {
         }
     }
 
-
     public User createUser(User user) {
         checkIfUserNameExistsInDb(user.getUsername());
         checkIfEmailExistsInDb(user.getEmail());
         return userRepository.save(user);
     }
-    
+
     public List<UserDto> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(user -> new UserDto(
-                        user.getUsername(),
-                        user.getEmail()
-                ))
+                .map(userDtoMapper)
                 .collect(Collectors.toList());
     }
 
-    public User getUserById(Long id) {
-        Optional<User> existingUserOptional = userRepository.findById(id);
-        if (existingUserOptional.isPresent()) {
-            return existingUserOptional.get();
-        } else {
-            throw new ResourceNotAvailableException("There is no user with provided id: " + id);
-        }
+    public UserDto getUserById(Long id){
+        return userRepository.findById(id)
+                .map(userDtoMapper)
+                .orElseThrow(() -> new ResourceNotAvailableException(
+                        "user with id [%s] not found".formatted(id)
+                ));
     }
 
-    public User updateUserName(Long id, User user) {
+    public User updateUser(Long id, User user) {
         checkIfUserNameExistsInDb(user.getUsername());
-        User existingUser = getUserById(id);
-        existingUser.setUsername(user.getUsername());
-        return userRepository.save(existingUser);
-    }
-
-    public User updateEmail(Long id, User user) {
         checkIfEmailExistsInDb(user.getEmail());
-        User existingUser = getUserById(id);
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotAvailableException(
+                        "user with id [%s] not found".formatted(id)
+                ));
+        existingUser.setUsername(user.getUsername());
         existingUser.setEmail(user.getEmail());
         return userRepository.save(existingUser);
     }
 
     public void deleteUser(Long id) {
-        User existingUser = getUserById(id);
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotAvailableException(
+                        "user with id [%s] not found".formatted(id)
+                ));
         userRepository.deleteById(existingUser.getId());
     }
 }

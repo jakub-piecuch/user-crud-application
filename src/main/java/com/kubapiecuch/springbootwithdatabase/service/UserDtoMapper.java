@@ -1,4 +1,20 @@
-package com.kubapiecuch.springbootwithdatabase.dto;
+package com.kubapiecuch.springbootwithdatabase.service;
 
-public class UserDtoMapper implements Function<Customer, >{
+
+import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
+import com.kubapiecuch.springbootwithdatabase.model.User;
+import org.springframework.stereotype.Service;
+
+import java.util.function.Function;
+
+@Service
+public class UserDtoMapper implements Function<User, UserDto> {
+
+    @Override
+    public UserDto apply(User user) {
+        return new UserDto(
+                user.getUsername(),
+                user.getEmail()
+        );
+    }
 }

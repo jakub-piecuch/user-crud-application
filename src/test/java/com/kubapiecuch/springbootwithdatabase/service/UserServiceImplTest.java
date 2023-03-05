@@ -25,7 +25,7 @@ class UserServiceImplTest {
 
     @BeforeEach
     public void setUp(){
-        userService = new UserServiceImpl(userRepository);
+        userService = new UserService(userRepository);
     }
 
     @Test
@@ -35,6 +35,6 @@ class UserServiceImplTest {
         user.setId(userId);
         when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
-        userService.updateUserName(userId, user);
+        userService.updateUser(userId, user);
     }
 }
