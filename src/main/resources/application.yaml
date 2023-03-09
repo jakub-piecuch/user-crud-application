@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/spring_my_database
+    username: kuba
+    password: jakubowy22
+  jpa:
+    hibernate:
+      dll-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: https://dev-q2e7znghx6pnlxj8.us.auth0.com/
+#auth0:
+#  audience: https://user-crud-api.com
+
+#spring.datasource.url=jdbc:mysql://localhost:3306/spring_my_database
+#spring.datasource.username=kuba
+#spring.datasource.password=jakubowy22
+#spring.jpa.hibernate.ddl-auto=update
+
+#auth0-security-configuration
+

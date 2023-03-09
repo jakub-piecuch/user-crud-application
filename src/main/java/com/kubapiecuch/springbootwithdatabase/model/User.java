@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 
 @Entity
 @Component
@@ -16,10 +18,24 @@ public class User {
     @Column(nullable = false)
     private String username;
 
+    @Column(nullable = false)
+    private String password;
+
     @Email
     private String email;
 
     public User() {
+    }
+
+    public User(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    public User(Long userId) {
+        this.id = userId;
     }
 
     public Long getId() {
@@ -38,6 +54,14 @@ public class User {
         this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -53,5 +77,18 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, email);
     }
 }
