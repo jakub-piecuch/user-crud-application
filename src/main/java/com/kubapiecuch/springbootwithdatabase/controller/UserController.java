@@ -3,6 +3,7 @@ package com.kubapiecuch.springbootwithdatabase.controller;
 import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
 import com.kubapiecuch.springbootwithdatabase.model.User;
 import com.kubapiecuch.springbootwithdatabase.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/v1/users")
 public class UserController {
@@ -24,6 +26,10 @@ public class UserController {
     @GetMapping()
     public ResponseEntity<List<UserDto>> getAllUsers() {
         List<UserDto> users = userService.getAllUsers();
+        UserDto user = userService.getUserById(1L);
+        UserDto result = userService.getUserById(users.get(1).getId());
+
+        log.info("tutaj jestem userDto {}", user);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
