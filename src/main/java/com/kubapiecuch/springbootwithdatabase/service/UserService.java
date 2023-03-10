@@ -5,6 +5,7 @@ import com.kubapiecuch.springbootwithdatabase.exception.ResourceNotAvailableExce
 import com.kubapiecuch.springbootwithdatabase.model.User;
 import com.kubapiecuch.springbootwithdatabase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,4 +77,6 @@ public class UserService {
                 ));
         userRepository.deleteById(existingUser.getId());
     }
+
+
 }
