@@ -36,7 +36,7 @@ class UserServiceTest {
 //    }
 
     @Test
-    public void expectedExceptionInUpdateUserWithInvalidId() {
+    public void expectedExceptionDuringUpdateUserWithInvalidId() {
         Long userId = 4L;
         User user = new User();
         user.setId(userId);
@@ -49,7 +49,7 @@ class UserServiceTest {
     }
 
     @Test
-    public void createUserTest() {
+    public void shouldCreateUser() {
         //Given
         User user = new User(
                 1L,
@@ -116,7 +116,7 @@ class UserServiceTest {
         userService.deleteUser(userId);
 
         //Then
-//        verify(userRepository, times(1)).deleteById(userId);
+//        verify(userRepository, times(1)).deleteById(userId); //those 2, are basically the same verify()
         verify(userRepository).deleteById(userId);
     }
 }
