@@ -1,10 +1,12 @@
 package com.kubapiecuch.springbootwithdatabase.service;
 
 
-import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
+import com.kubapiecuch.springbootwithdatabase.user.UserDto;
 import com.kubapiecuch.springbootwithdatabase.exception.ResourceNotAvailableException;
-import com.kubapiecuch.springbootwithdatabase.model.User;
-import com.kubapiecuch.springbootwithdatabase.repository.UserRepository;
+import com.kubapiecuch.springbootwithdatabase.user.User;
+import com.kubapiecuch.springbootwithdatabase.user.UserRepository;
+import com.kubapiecuch.springbootwithdatabase.user.UserDtoMapper;
+import com.kubapiecuch.springbootwithdatabase.user.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

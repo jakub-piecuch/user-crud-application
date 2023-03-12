@@ -1,6 +1,6 @@
-package com.kubapiecuch.springbootwithdatabase.controller;
+package com.kubapiecuch.springbootwithdatabase.token;
 
-import com.kubapiecuch.springbootwithdatabase.service.TokenService;
+import com.kubapiecuch.springbootwithdatabase.token.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/v1/users/token")
-public class AuthController {
+public class TokenController {
     private final TokenService tokenService;
 
     @Autowired
-    public AuthController(TokenService tokenService) {
+    public TokenController(TokenService tokenService) {
         this.tokenService = tokenService;
     }
 

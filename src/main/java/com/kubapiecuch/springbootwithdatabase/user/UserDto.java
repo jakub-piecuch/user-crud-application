@@ -1,4 +1,4 @@
-package com.kubapiecuch.springbootwithdatabase.dto;
+package com.kubapiecuch.springbootwithdatabase.user;
 
 public class UserDto {
     private Long id;

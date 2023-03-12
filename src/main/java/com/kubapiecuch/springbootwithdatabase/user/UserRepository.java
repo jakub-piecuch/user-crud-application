@@ -1,6 +1,5 @@
-package com.kubapiecuch.springbootwithdatabase.repository;
+package com.kubapiecuch.springbootwithdatabase.user;
 
-import com.kubapiecuch.springbootwithdatabase.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
