@@ -1,4 +1,4 @@
-package com.kubapiecuch.springbootwithdatabase.service;
+package com.kubapiecuch.springbootwithdatabase.token;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

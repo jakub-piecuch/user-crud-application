@@ -1,8 +1,8 @@
-package com.kubapiecuch.springbootwithdatabase.controller;
+package com.kubapiecuch.springbootwithdatabase.user;
 
-import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
-import com.kubapiecuch.springbootwithdatabase.model.User;
-import com.kubapiecuch.springbootwithdatabase.service.UserService;
+import com.kubapiecuch.springbootwithdatabase.user.UserDto;
+import com.kubapiecuch.springbootwithdatabase.user.User;
+import com.kubapiecuch.springbootwithdatabase.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

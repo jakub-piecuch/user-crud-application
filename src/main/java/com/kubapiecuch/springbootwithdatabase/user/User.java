@@ -1,4 +1,4 @@
-package com.kubapiecuch.springbootwithdatabase.model;
+package com.kubapiecuch.springbootwithdatabase.user;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

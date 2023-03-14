@@ -1,14 +1,12 @@
 package com.kubapiecuch.springbootwithdatabase.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kubapiecuch.springbootwithdatabase.model.User;
-import com.kubapiecuch.springbootwithdatabase.service.UserService;
+import com.kubapiecuch.springbootwithdatabase.user.User;
+import com.kubapiecuch.springbootwithdatabase.user.UserController;
+import com.kubapiecuch.springbootwithdatabase.user.UserService;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -25,7 +23,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.mockito.Mockito.*;
 
 
-@ExtendWith(MockitoExtension.class)
 @WebMvcTest(controllers = UserController.class)
 @AutoConfigureMockMvc(addFilters = false)
 public class UserControllerTest {
