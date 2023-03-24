@@ -1,8 +1,6 @@
-package com.kubapiecuch.springbootwithdatabase.service;
+package com.kubapiecuch.springbootwithdatabase.user;
 
 
-import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
-import com.kubapiecuch.springbootwithdatabase.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

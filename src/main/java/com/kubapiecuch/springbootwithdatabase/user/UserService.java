@@ -1,9 +1,6 @@
-package com.kubapiecuch.springbootwithdatabase.service;
+package com.kubapiecuch.springbootwithdatabase.user;
 
-import com.kubapiecuch.springbootwithdatabase.dto.UserDto;
 import com.kubapiecuch.springbootwithdatabase.exception.ResourceNotAvailableException;
-import com.kubapiecuch.springbootwithdatabase.model.User;
-import com.kubapiecuch.springbootwithdatabase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,4 +73,6 @@ public class UserService {
                 ));
         userRepository.deleteById(existingUser.getId());
     }
+
+
 }

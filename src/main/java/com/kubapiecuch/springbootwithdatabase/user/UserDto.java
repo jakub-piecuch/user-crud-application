@@ -1,4 +1,4 @@
-package com.kubapiecuch.springbootwithdatabase.dto;
+package com.kubapiecuch.springbootwithdatabase.user;
 
 public class UserDto {
     private Long id;
@@ -41,7 +41,8 @@ public class UserDto {
     @Override
     public String toString() {
         return "UserDto{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
