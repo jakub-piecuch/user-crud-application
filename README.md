@@ -24,5 +24,5 @@ User management application - REST API tak provides CRUD operation on User entit
 - Application provides a set of CRUD htttp methods. 
 - In order to use them first, get a valid token for authentication, by passing valid user credentials with `GET localhost:8080/v1/users/token` request.
 - For now its in-memory user that can be used with username: jacob, and password: password
-- When token is aquired, pass it with any of the user http requests to get autheticated and get response back
+- When token is aquired, pass it with any of the user http request to get autheticated and get response back
 
