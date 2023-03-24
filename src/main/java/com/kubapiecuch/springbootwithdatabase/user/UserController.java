@@ -13,6 +13,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin
 @RequestMapping("/v1/users")
 public class UserController {
 
