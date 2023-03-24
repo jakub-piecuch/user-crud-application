@@ -114,7 +114,6 @@ class UserServiceTest {
         userService.deleteUser(userId);
 
         //Then
-//        verify(userRepository, times(1)).deleteById(userId); //those 2, are basically the same verify()
         verify(userRepository).deleteById(userId);
     }
 }
