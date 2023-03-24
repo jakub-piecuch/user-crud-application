@@ -32,10 +32,6 @@ class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
-//    @BeforeEach
-//    public void setUp(){
-//        userService = new UserService(userRepository, userDtoMapper);
-//    }
 
     @Test
     public void expectedExceptionDuringUpdateUserWithInvalidId() {
